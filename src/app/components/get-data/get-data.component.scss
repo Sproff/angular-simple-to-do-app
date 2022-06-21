@@ -1,0 +1,29 @@
+.container {
+  background: #fff;
+  margin: 1rem 0;
+  padding: 2rem 4rem;
+
+  .table {
+    margin-top: 2rem;
+  }
+}
+
+.btn {
+  color: #fff;
+  padding: 0.7rem 2rem;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.edit {
+  background: #a94442;
+}
+
+.delete {
+  border: 1px solid #0f4a7b;
+  background: transparent;
+  color: #0f4a7b;
+  margin-left: 1rem;
+}

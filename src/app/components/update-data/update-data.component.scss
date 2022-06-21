@@ -1,0 +1,33 @@
+.container {
+  background: #fff;
+  padding: 2rem 4rem;
+}
+
+.form-group {
+  margin: 1rem 0;
+
+  label {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+}
+
+.form-control {
+  background: transparent;
+  border: 1px solid #0f4a7b;
+  padding: 0.7rem;
+  outline: none;
+  margin: 0.5rem 0;
+  width: 50%;
+  border-radius: 5px;
+}
+
+.btn {
+  background: #0f4a7b;
+  color: #fff;
+  padding: 0.7rem 2rem;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}

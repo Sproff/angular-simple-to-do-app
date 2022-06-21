@@ -1,7 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+};
+
+export interface TaskProps {
+  id?: number;
+  title: string;
+  body: string;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -10,19 +19,30 @@ export class QueriesService {
 
   constructor(private http: HttpClient) {}
 
-  getData(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/posts/1`);
+  getData(): Observable<TaskProps[]> {
+    return this.http.get<TaskProps[]>(`${this.baseUrl}/posts`);
   }
 
-  postData(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/posts`, data);
+  getSingleData(task: any): Observable<TaskProps> {
+    const url = `${this.baseUrl}/posts/${task.id}`;
+    return this.http.get<any>(url);
   }
 
-  updateData(data: any): Observable<any> {
-    return this.http.patch(`${this.baseUrl}/posts/1`, data);
+  postData(task: TaskProps): Observable<TaskProps> {
+    return this.http.post<TaskProps>(
+      `${this.baseUrl}/posts`,
+      task,
+      httpOptions
+    );
   }
 
-  deleteData(): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/posts/1`);
+  updateData(task: TaskProps): Observable<TaskProps> {
+    const url = `${this.baseUrl}/posts/${task.id}`;
+    return this.http.patch<TaskProps>(url, task, httpOptions);
+  }
+
+  deleteData(task: TaskProps): Observable<TaskProps> {
+    const url = `${this.baseUrl}/posts/${task.id}`;
+    return this.http.delete<TaskProps>(url);
   }
 }
